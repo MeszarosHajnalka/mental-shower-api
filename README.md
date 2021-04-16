@@ -4,22 +4,12 @@
 
 ```
 1. npm install
-2. Setup db.config.js under the config folder
+2. Setup local .env file with the following props
 
-module.exports = {
-  HOST: "",
-  USER: "",
-  PASSWORD: "",
-  DB: "",
-  dialect: "mysql",
-  pool: {
-    max: 5,
-    min: 0,
-    acquire: 30000,
-    idle: 10000
-  }
-};
-
+HOST:"",
+USER: "",
+PASSWORD: "",
+DB: "",
 
 ```
 
