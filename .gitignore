@@ -1,3 +1,6 @@
+#Sensitive files
+app/config/db.config.js
+
 # Logs
 logs
 *.log
