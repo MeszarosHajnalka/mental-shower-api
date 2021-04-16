@@ -16,5 +16,5 @@ DB: "",
 ### Run
 
 ```
-node server.js
+node .dev || npm start
 ```
