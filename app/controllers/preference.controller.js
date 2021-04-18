@@ -1,7 +1,5 @@
-const { response } = require("express");
 const db = require("../models");
 const Preference = db.preference;
-const Op = db.Sequelize.Op;
 
 exports.findAll = (req, res) => {
     Preference.findAll()
