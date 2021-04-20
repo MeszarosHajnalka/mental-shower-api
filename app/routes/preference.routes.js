@@ -5,6 +5,7 @@ module.exports = app => {
     router.get("/", preference.findAll);
     router.post("/", preference.create);
     router.delete("/:id", preference.delete);
+    router.put("/", preference.update)
 
     app.use('/api/preference', router);
 };
