@@ -1,5 +1,8 @@
 const db = require("../models");
 const User = db.user;
+const authService = require("../utils/jwtAuth.js")
+const jwt = require("jsonwebtoken");
+
 
 exports.findAll = (req, res) => {
   User.findAll()
@@ -46,9 +49,11 @@ exports.authenticate = (req, res) => {
         res.status(404).send({ message: "Incorrect username or password" })
         return
       }
-      res.send(data);
+      const token = authService.createToken(data.username, data.id);
+      res.send(token);
     })
     .catch(err => {
+      console.log(err)
       res.status(500).send({
         message: "Error on authenticating user."
       });
