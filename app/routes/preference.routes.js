@@ -3,6 +3,7 @@ module.exports = app => {
     var router = require("express").Router();
 
     router.get("/", preference.findAll);
+    router.get("/:id", preference.findAllByUserId);
     router.post("/", preference.create);
     router.delete("/:id", preference.delete);
     router.put("/", preference.update)

@@ -1,6 +1,20 @@
 const db = require("../models");
 const Preference = db.preference;
 
+exports.findAllByUserId = (req, res) => {
+    const id = req.params.id;
+    Preference.findAll({where:{user_id: id}})
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving preferences."
+            });
+        });
+};
+
 exports.findAll = (req, res) => {
     Preference.findAll()
         .then(data => {
