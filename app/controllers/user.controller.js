@@ -50,7 +50,7 @@ exports.authenticate = (req, res) => {
         return
       }
       const token = authService.createToken(data.username, data.id);
-      res.send(token);
+      res.send({ token });
     })
     .catch(err => {
       console.log(err)
