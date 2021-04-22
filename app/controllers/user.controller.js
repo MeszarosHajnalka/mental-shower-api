@@ -2,6 +2,7 @@ const db = require("../models");
 const User = db.user;
 const authService = require("../utils/jwtAuth.js")
 const jwt = require("jsonwebtoken");
+const md5 = require("md5");
 
 
 exports.findAll = (req, res) => {
@@ -27,7 +28,7 @@ exports.create = (req, res) => {
 
   const user = {
     username: req.body.username,
-    password: req.body.password
+    password: md5(req.body.password + process.env.HASH_SALT)
   };
 
   User.create(user)
@@ -43,7 +44,8 @@ exports.create = (req, res) => {
 };
 
 exports.authenticate = (req, res) => {
-  User.findOne({ where: { username: req.body.username, password: req.body.password } })
+  const password = md5(req.body.password + process.env.HASH_SALT)
+  User.findOne({ where: { username: req.body.username, password: password } })
     .then(data => {
       if (!data) {
         res.status(404).send({ message: "Incorrect username or password" })
