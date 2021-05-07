@@ -1,4 +1,4 @@
-const dbConfig = require("../config/db.config.js");
+/*const dbConfig = require("../config/db.config.js");
 
 const Sequelize = require("sequelize");
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
@@ -12,8 +12,13 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
     acquire: dbConfig.pool.acquire,
     idle: dbConfig.pool.idle
   }
+});*/
+const Sequelize = require("sequelize");
+const sequelize = new Sequelize('testdb', '', '', {
+  host: "localhost",
+  dialect: "mysql",
+  port: 
 });
-
 const db = {};
 
 db.Sequelize = Sequelize;
@@ -21,6 +26,9 @@ db.sequelize = sequelize;
 
 db.user = require("./user.model.js")(sequelize, Sequelize);
 db.preference = require("./preference.model.js")(sequelize, Sequelize);
+db.zone = require("./zone.model.js")(sequelize, Sequelize);
+db.classroom = require("./classroom.model.js")(sequelize, Sequelize);
+db.zoneRecord=require("./zoneRecord.model.js")(sequelize, Sequelize);
 
 // db.user.hasMany(db.preference);
 // db.preference.belongsTo(db.user);
