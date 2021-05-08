@@ -14,10 +14,10 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   }
 });*/
 const Sequelize = require("sequelize");
-const sequelize = new Sequelize('testdb', '', '', {
+const sequelize = new Sequelize('tes2', 'root', 'root', {
   host: "localhost",
   dialect: "mysql",
-  port: 
+  port: 3307
 });
 const db = {};
 
@@ -28,7 +28,8 @@ db.user = require("./user.model.js")(sequelize, Sequelize);
 db.preference = require("./preference.model.js")(sequelize, Sequelize);
 db.zone = require("./zone.model.js")(sequelize, Sequelize);
 db.classroom = require("./classroom.model.js")(sequelize, Sequelize);
-db.zoneRecord=require("./zoneRecord.model.js")(sequelize, Sequelize);
+db.zone_record = require("./zone_record.model.js")(sequelize, Sequelize);
+
 
 // db.user.hasMany(db.preference);
 // db.preference.belongsTo(db.user);

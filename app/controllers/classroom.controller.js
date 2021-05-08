@@ -1,5 +1,5 @@
 const db = require("../models");
-const Classroom = db.classrooms;
+const Classroom = db.classroom;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Classroom

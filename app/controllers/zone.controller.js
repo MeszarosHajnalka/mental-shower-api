@@ -1,5 +1,5 @@
 const db = require("../models");
-const Zone = db.zones;
+const Zone = db.zone;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Zone

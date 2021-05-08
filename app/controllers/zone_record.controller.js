@@ -1,8 +1,8 @@
 const db = require("../models");
-const ZoneRecor = db.zonerecors;
+const Zone_record = db.zone_record;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new ZoneRecor
+// Create and Save a new Zone_record
 exports.create = (req, res) => {
   console.log('create: ' + req);
   // Validate request
@@ -14,17 +14,17 @@ exports.create = (req, res) => {
     return;
   }
 
-  // Create a ZoneRecor
-  const zonerecor = {
+  // Create a Zone_record
+  const zone_record = {
    
-    zonerecor_id: req.body.zonerecor_id,
-    class_id:req.body.class_id,
-   description:req.body.description
+    zone_record_id: req.body.zone_record_id,
+    zone_id:req.body.zone_id,
+   user_pref_id:req.body.user_pref_id
     
   };
 
-  // Save zonerecor in the database
-  ZoneRecor.create(zonerecor)
+  // Save zone_record in the database
+  Zone_record.create(zone_record)
     .then(data => {
         console.log(data);
       res.send(data);
@@ -32,122 +32,122 @@ exports.create = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the zonerecor."
+          err.message || "Some error occurred while creating the zone_record."
       });
     });
 };
 
-// Retrieve all ZoneRecors from the database.
+// Retrieve all Zone_records from the database.
 exports.findAll = (req, res) => {
-    ZoneRecor.findAll()
+    Zone_record.findAll()
       .then(data => {
         res.send(data);
       })
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving zonerecors."
+            err.message || "Some error occurred while retrieving zone_records."
         });
       });
   
 };
 
-// Find a single ZoneRecor with an id
+// Find a single Zone_record with an id
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    ZoneRecor.findByPk(id)
+    Zone_record.findByPk(id)
       .then(data => {
         res.send(data);
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error retrieving ZoneRecor with id=" + id
+          message: "Error retrieving Zone_record with id=" + id
         });
       });
   
 };
 
-// Update a ZoneRecor by the id in the request
+// Update a Zone_record by the id in the request
 exports.update = (req, res) => {
     const id = req.params.id;
 
-    ZoneRecor.update(req.body, {
+    Zone_record.update(req.body, {
       where: { id: id }
     })
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "ZoneRecor was updated successfully."
+            message: "Zone_record was updated successfully."
           });
         } else {
           res.send({
-            message: `Cannot update ZoneRecor with id=${id}. Maybe ZoneRecor was not found or req.body is empty!`
+            message: `Cannot update Zone_record with id=${id}. Maybe Zone_record was not found or req.body is empty!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error updating ZoneRecor with id=" + id
+          message: "Error updating Zone_record with id=" + id
         });
       });
   
 };
 
-// Delete a ZoneRecor with the specified id in the request
+// Delete a Zone_record with the specified id in the request
 exports.delete = (req, res) => {
     const id = req.params.id;
 
-    ZoneRecor.destroy({
+    Zone_record.destroy({
       where: { id: id }
     })
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "ZoneRecor was deleted successfully!"
+            message: "Zone_record was deleted successfully!"
           });
         } else {
           res.send({
-            message: `Cannot delete ZoneRecor with id=${id}. Maybe ZoneRecor was not found!`
+            message: `Cannot delete Zone_record with id=${id}. Maybe Zone_record was not found!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Could not delete ZoneRecor with id=" + id
+          message: "Could not delete Zone_record with id=" + id
         });
       });
   
 };
 
-// Delete all ZoneRecors from the database.
+// Delete all Zone_records from the database.
 exports.deleteAll = (req, res) => {
-    ZoneRecor.destroy({
+    Zone_record.destroy({
         where: {},
         truncate: false
       })
         .then(nums => {
-          res.send({ message: `${nums} ZoneRecors were deleted successfully!` });
+          res.send({ message: `${nums} Zone_records were deleted successfully!` });
         })
         .catch(err => {
           res.status(500).send({
             message:
-              err.message || "Some error occurred while removing all zonerecors."
+              err.message || "Some error occurred while removing all zone_records."
           });
         });
     
 };
 
-// Find all published ZoneRecors
+// Find all published Zone_records
 exports.findAllPublished = (req, res) => {
-    ZoneRecor.findAll({ where: { published: true } })
+    Zone_record.findAll({ where: { published: true } })
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving zonerecors."
+          err.message || "Some error occurred while retrieving zone_records."
       });
     });
 
