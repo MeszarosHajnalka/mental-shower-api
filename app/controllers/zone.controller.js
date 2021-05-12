@@ -54,11 +54,19 @@ exports.findAll = (req, res) => {
 
 // Find a single Zone with an id
 exports.findOne = (req, res) => {
-    const id = req.params.id;
+    const cid = req.params.id;
+    let zoneSelected = [];
 
-    Zone.findByPk(id)
+    Zone.findAll()
       .then(data => {
-        res.send(data);
+          data.forEach(i => { if (i.class_id == cid ) {
+           zoneSelected.push(i)
+          }
+              
+          });
+          
+
+        res.send(zoneSelected);
       })
       .catch(err => {
         res.status(500).send({
