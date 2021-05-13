@@ -11,6 +11,9 @@ module.exports = app => {
   
     // Retrieve all published Zone
     router.get("/published", zone.findAllPublished);
+
+    router.get("/classId/:id",zone.findAllZonesWithThatClass);
+  
   
     // Retrieve a single Tutorial with id
     router.get("/:id", zone.findOne);

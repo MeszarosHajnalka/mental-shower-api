@@ -1,3 +1,5 @@
+const { findAllZonesWithThatClass } = require("../controllers/zone.controller.js");
+
 module.exports = app => {
     const zone_record = require("../controllers/zone_record.controller.js");
   
@@ -5,7 +7,7 @@ module.exports = app => {
   
     // Create a new Tutorial
     router.post("/", zone_record.create);
-  
+    
     // Retrieve all Zone_record
     router.get("/", zone_record.findAll);
   

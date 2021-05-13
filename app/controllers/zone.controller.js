@@ -42,6 +42,7 @@ exports.findAll = (req, res) => {
     Zone.findAll()
       .then(data => {
         res.send(data);
+        console.log(data);
       })
       .catch(err => {
         res.status(500).send({
@@ -52,6 +53,26 @@ exports.findAll = (req, res) => {
   
 };
 
+exports.findAllZonesWithThatClass = (req, res) => {
+    var zoneSelected = [];
+    const cid = req.params.id;
+    Zone.findAll()
+    .then(data => {
+        data.forEach(i => { if (i.class_id == cid ) {
+         zoneSelected.push(i)
+        }
+            console.log(zoneSelected)
+        });res.send(zoneSelected);
+    })
+    
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving zones."
+        });
+      });
+  
+    };
 // Find a single Zone with an id
 exports.findOne = (req, res) => {
     const cid = req.params.id;
@@ -62,7 +83,7 @@ exports.findOne = (req, res) => {
           data.forEach(i => { if (i.class_id == cid ) {
            zoneSelected.push(i)
           }
-              
+              console.log(JSON.stringify(zoneSelected))
           });
           
 
