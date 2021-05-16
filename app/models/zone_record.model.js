@@ -5,6 +5,10 @@ module.exports = (sequelize, Sequelize) => {
             autoIncrement: true,
             type: Sequelize.INTEGER
         },
+
+        user_id: {
+            type: Sequelize.INTEGER
+        },
         
         user_pref_id: {
             type: Sequelize.INTEGER

@@ -20,7 +20,8 @@ exports.create = (req, res) => {
    
     zone_record_id: req.body.zone_record_id,
     zone_id:req.body.zone_id,
-   user_pref_id:req.body.user_pref_id
+   user_pref_id:req.body.user_pref_id,
+    user_id: req.body.user_id
     
   };
 
@@ -106,7 +107,7 @@ exports.update = (req, res) => {
     const id = req.params.id;
 
     Zone_record.update(req.body, {
-      where: { id: id }
+      where: { user_id: id }
     })
       .then(num => {
         if (num == 1) {
@@ -132,7 +133,7 @@ exports.delete = (req, res) => {
     const id = req.params.id;
 
     Zone_record.destroy({
-      where: { id: id }
+      where: { zone_record_id: id }
     })
       .then(num => {
         if (num == 1) {
