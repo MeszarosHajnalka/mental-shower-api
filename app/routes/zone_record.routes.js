@@ -16,6 +16,7 @@ module.exports = app => {
   
     // Retrieve a single Tutorial with id
     router.get("/:id", zone_record.findOne);
+    router.get("/c/:id", zone_record.getValuesUnit);
   
     // Update a Tutorial with id
     router.put("/:id", zone_record.update);

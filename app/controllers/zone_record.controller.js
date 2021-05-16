@@ -1,5 +1,6 @@
 const db = require("../models");
 const Zone_record = db.zone_record;
+const Pref = db.preference;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Zone_record
@@ -22,6 +23,7 @@ exports.create = (req, res) => {
    user_pref_id:req.body.user_pref_id
     
   };
+
 
   // Save zone_record in the database
   Zone_record.create(zone_record)
@@ -68,6 +70,37 @@ exports.findOne = (req, res) => {
   
 };
 
+//CALCULATE
+exports.getValuesUnit = (req, res) => {
+  var valuesConsider = [];
+  const id = req.params.id;
+  
+ // var todays = new Date();
+var todays = "5/15/2021"
+  Zone_record.findAll({ where: { zone_id:id } })
+    .then(data => {
+      data.forEach(i => {        
+        var d = new Date(i.updatedAt); 
+       if(d.toLocaleString().split(',')[0] === todays.toLocaleString().split(',')[0]){
+        console.log("heree")   
+         valuesConsider.push(i)
+               }
+console.log(d.toLocaleString().split(',')[0] + todays.toLocaleString().split(',')[0]);
+        
+      });// res.send(valuesConsider);
+    
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving zone_records."
+      });
+    });
+    console.log("it is after the catch")
+
+
+
+  };
 // Update a Zone_record by the id in the request
 exports.update = (req, res) => {
     const id = req.params.id;
