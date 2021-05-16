@@ -17,9 +17,10 @@ exports.create = (req, res) => {
   // Create a Classroom
   const classroom = {
    
-    classroom_id: req.body.classroom_id,
+    
     class_id:req.body.class_id,
-   description:req.body.description
+    classroomname: req.body.classroomname
+   //description:req.body.description
     
   };
 
