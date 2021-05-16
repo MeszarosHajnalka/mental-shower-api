@@ -1,4 +1,4 @@
-/*module.exports = {
+module.exports = {
   HOST: process.env.HOST,
   USER: process.env.USER,
   PASSWORD: process.env.PASSWORD,
@@ -10,4 +10,4 @@
     acquire: 30000,
     idle: 10000
   }
-};*/
+};

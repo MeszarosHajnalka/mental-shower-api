@@ -1,4 +1,4 @@
-/*const dbConfig = require("../config/db.config.js");
+/ dbConfig = require("../config/db.config.js");
 
 const Sequelize = require("sequelize");
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
@@ -12,13 +12,13 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
     acquire: dbConfig.pool.acquire,
     idle: dbConfig.pool.idle
   }
-});*/
-const Sequelize = require("sequelize");
+});
+/*const Sequelize = require("sequelize");
 const sequelize = new Sequelize('test', 'root', '', {
   host: "localhost",
   dialect: "mysql",
   port: 3306
-});
+});*/
 const db = {};
 
 db.Sequelize = Sequelize;
