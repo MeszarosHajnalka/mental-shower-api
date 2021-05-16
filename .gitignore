@@ -106,3 +106,5 @@ dist
 # TernJS port file
 .tern-port
 app/.dev
+app/utils/jwtAuth.js
+app/models/index.js
