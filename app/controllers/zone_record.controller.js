@@ -87,7 +87,7 @@ var todays = "5/15/2021"
                }
 console.log(d.toLocaleString().split(',')[0] + todays.toLocaleString().split(',')[0]);
         
-      });// res.send(valuesConsider);
+      });res.send(valuesConsider);
     
     })
     .catch(err => {
