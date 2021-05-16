@@ -59,7 +59,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    Zone_record.findByPk(id)
+    Zone_record.findAll({ where: { user_id:id } })
       .then(data => {
         res.send(data);
       })
@@ -76,8 +76,8 @@ exports.getValuesUnit = (req, res) => {
   var valuesConsider = [];
   const id = req.params.id;
   
- // var todays = new Date();
-var todays = "5/15/2021"
+  var todays = new Date();
+//var todays = "5/15/2021"
   Zone_record.findAll({ where: { zone_id:id } })
     .then(data => {
       data.forEach(i => {        

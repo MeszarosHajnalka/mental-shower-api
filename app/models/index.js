@@ -14,10 +14,10 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   }
 });*/
 const Sequelize = require("sequelize");
-const sequelize = new Sequelize('test', 'root', '', {
+const sequelize = new Sequelize('tes2', 'root', 'root', {
   host: "localhost",
   dialect: "mysql",
-  port: 3306
+  port: 3307
 });
 const db = {};
 
