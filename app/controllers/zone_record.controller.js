@@ -83,10 +83,10 @@ exports.getValuesUnit = (req, res) => {
       data.forEach(i => {        
         var d = new Date(i.updatedAt); 
        if(d.toLocaleString().split(',')[0] === todays.toLocaleString().split(',')[0]){
-        console.log("heree")   
-         valuesConsider.push(i)
+        console.log(i.dataValues)   
+         valuesConsider.push(i.dataValues);
                }
-console.log(d.toLocaleString().split(',')[0] + todays.toLocaleString().split(',')[0]);
+//console.log(d.toLocaleString().split(',')[0] + todays.toLocaleString().split(',')[0]);
         
       });res.send(valuesConsider);
     

@@ -15,6 +15,14 @@ exports.findAllByUserId = (req, res) => {
         });
 };
 
+exports.findByuser_pref_id = (req, res) => {
+    const id = req.params.id;
+    Preference.findByPk(id)
+    .then(data => {
+        res.send(data);
+    });
+}
+
 exports.findAll = (req, res) => {
     Preference.findAll()
         .then(data => {
